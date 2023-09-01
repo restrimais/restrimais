@@ -1,5 +1,6 @@
 package com.lcdev.restrimais.domain.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -18,6 +19,8 @@ public class Nutritionist extends User{
     private String crn;
     private String specialization;
     private String academicDegree;
+
+    @Column(columnDefinition = "TEXT")
     private String biography;
 
     @OneToMany(mappedBy = "nutritionist")
@@ -28,4 +31,7 @@ public class Nutritionist extends User{
 
     @OneToMany(mappedBy = "nutritionist")
     private List<Assessment> assessments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "nutritionist")
+    private Set<Query> queries = new HashSet<>();
 }

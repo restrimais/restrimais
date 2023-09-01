@@ -15,7 +15,6 @@ import java.util.Set;
 @Table(name = "tb_patient")
 public class Patient extends User{
 
-    private String cpf;
     private Double height;
     private Double weight;
 
@@ -27,4 +26,7 @@ public class Patient extends User{
 
     @OneToMany(mappedBy = "patient")
     private List<Assessment> assessments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "patient")
+    private Set<Query> queries = new HashSet<>();
 }
