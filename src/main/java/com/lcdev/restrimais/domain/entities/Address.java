@@ -21,7 +21,7 @@ public class Address {
     private String neighborhood;
     private String cep;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "city_id")
     private City city;
 
