@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.rest.controller;
 
-import com.lcdev.restrimais.rest.dto.CityDTO;
+import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
 import com.lcdev.restrimais.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class CityController {
     private CityService service;
 
     @PostMapping
-    public ResponseEntity<CityDTO> save(@RequestBody CityDTO dto){
+    public ResponseEntity<CityStateDTO> save(@RequestBody CityStateDTO dto){
         dto = service.save(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
@@ -26,18 +26,18 @@ public class CityController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CityDTO> findById(@PathVariable Long id){
-        CityDTO dto = service.findById(id);
+    public ResponseEntity<CityStateDTO> findById(@PathVariable Long id){
+        CityStateDTO dto = service.findById(id);
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping
-    public List<CityDTO> findAll(){
+    public List<CityStateDTO> findAll(){
         return service.findAll();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CityDTO> update(@PathVariable Long id, @RequestBody CityDTO dto){
+    public ResponseEntity<CityStateDTO> update(@PathVariable Long id, @RequestBody CityStateDTO dto){
         dto = service.update(id, dto);
         return ResponseEntity.ok(dto);
     }

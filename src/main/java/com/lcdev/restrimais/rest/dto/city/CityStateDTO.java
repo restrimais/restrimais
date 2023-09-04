@@ -1,6 +1,7 @@
-package com.lcdev.restrimais.rest.dto;
+package com.lcdev.restrimais.rest.dto.city;
 
 import com.lcdev.restrimais.domain.entities.City;
+import com.lcdev.restrimais.rest.dto.state.StateDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,15 +9,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CityDTO {
+public class CityStateDTO {
 
     private Long id;
     private String name;
-    private Long stateId;
+    private StateDTO state;
 
-    public CityDTO(City entity){
+    public CityStateDTO(City entity){
         id = entity.getId();
         name = entity.getName();
-        stateId = entity.getState().getId();
+        state = new StateDTO(entity.getState());
     }
 }
