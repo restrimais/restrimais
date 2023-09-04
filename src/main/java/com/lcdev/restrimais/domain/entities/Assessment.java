@@ -7,7 +7,11 @@ import lombok.ToString;
 @Data
 @ToString
 @Entity
-@Table(name = "tb_assessment")
+@Table(name = "tb_assessment", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"patient_id", "nutritionist_id"}),
+        @UniqueConstraint(columnNames = {"patient_id", "revenue_id"}),
+        @UniqueConstraint(columnNames = {"nutritionist_id", "revenue_id"})
+})
 public class Assessment {
 
     @Id
