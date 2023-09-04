@@ -15,7 +15,7 @@ INSERT INTO tb_restriction_category (restriction_id, category_id) VALUES (3, 1);
 
 INSERT INTO tb_nutritionist (name, email, birth_date, password, cpf, gender, profile_img, phone, crn, specialization, academic_degree, biography) VALUES ('Ana Luiza', 'ana@gmail.com', '2002-10-08', 'teste123', '44455566609', 1, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg', '955557777', 'CRM/SP 123456', 'Nutricao Esportiva', 'Bacharelado em Nutricao', 'Nutricionista Esportiva dedicada a otimizar desempenho e saúde. Graduada em Nutrição pela [Nome da Universidade], com especialização em Nutrição Esportiva pela [Nome da Instituição]. Meu foco é fornecer orientação personalizada para ajudar meus clientes a alcançar seus objetivos. Apaixonada por promover educação em saúde, sou palestrante em eventos esportivos e escolas. Acredito que a nutrição e um estilo de vida ativo são a chave para o bem-estar.');
 
-INSERT INTO tb_professional_experience (office, company, start_date, end_date, nutritionist_id) VALUES ('Nutricionista Esportivo', 'Hospital X', '2022-06-13', '2023-09-03', 1)
+INSERT INTO tb_professional_experience (office, company, start_date, end_date, nutritionist_id) VALUES ('Nutricionista Esportivo', 'Hospital X', '2022-06-13', '2023-09-03', 1);
 
 INSERT INTO tb_state (name) VALUES ('São Paulo');
 INSERT INTO tb_state (name) VALUES ('Minas Gerais');
