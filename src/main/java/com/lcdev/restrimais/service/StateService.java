@@ -2,6 +2,7 @@ package com.lcdev.restrimais.service;
 
 import com.lcdev.restrimais.domain.entities.State;
 import com.lcdev.restrimais.repository.StateRepository;
+import com.lcdev.restrimais.rest.dto.StateCityDTO;
 import com.lcdev.restrimais.rest.dto.StateDTO;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
@@ -29,9 +30,10 @@ public class StateService {
     }
 
     @Transactional(readOnly = true)
-    public List<StateDTO> findAll(){
+    public List<StateCityDTO> findAll(){
         List<State> result = repository.findAll();
-        return result.stream().map(StateDTO::new).collect(Collectors.toList());
+        repository.findStatesCities(result);
+        return result.stream().map(StateCityDTO::new).collect(Collectors.toList());
     }
 
     @Transactional()

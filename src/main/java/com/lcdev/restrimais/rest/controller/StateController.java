@@ -1,5 +1,6 @@
 package com.lcdev.restrimais.rest.controller;
 
+import com.lcdev.restrimais.rest.dto.StateCityDTO;
 import com.lcdev.restrimais.rest.dto.StateDTO;
 import com.lcdev.restrimais.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class StateController {
     }
 
     @GetMapping
-    public List<StateDTO> findAll(){
+    public List<StateCityDTO> findAll(){
         return service.findAll();
     }
 
