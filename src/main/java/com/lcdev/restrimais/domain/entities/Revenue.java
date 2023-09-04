@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @ToString
@@ -21,6 +19,8 @@ public class Revenue {
 
     private String name;
     private String img;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @OneToMany(mappedBy = "revenue")

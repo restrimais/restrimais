@@ -14,8 +14,8 @@ public class Ingredients {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String quantity;
+    @Column(columnDefinition = "TEXT")
+    private String igredient;
 
     @ManyToOne
     @JoinColumn(name = "revenue_id")

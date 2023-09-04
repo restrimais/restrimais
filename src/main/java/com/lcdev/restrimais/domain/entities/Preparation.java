@@ -12,9 +12,12 @@ public class Preparation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "TEXT")
     private String step;
     private String time;
     private String temperature;
+
+    @Column(columnDefinition = "TEXT")
     private String observation;
 
     @OneToOne(mappedBy = "preparation", cascade = CascadeType.ALL)
