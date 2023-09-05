@@ -2,7 +2,7 @@ package com.lcdev.restrimais.rest.controller;
 
 import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
 import com.lcdev.restrimais.service.CityService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -11,11 +11,11 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "cities")
 public class CityController {
 
-    @Autowired
-    private CityService service;
+    private final CityService service;
 
     @PostMapping
     public ResponseEntity<CityStateDTO> save(@RequestBody CityStateDTO dto){

@@ -3,7 +3,7 @@ package com.lcdev.restrimais.rest.controller;
 import com.lcdev.restrimais.rest.dto.state.StateCityDTO;
 import com.lcdev.restrimais.rest.dto.state.StateDTO;
 import com.lcdev.restrimais.service.StateService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -12,11 +12,11 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "states")
 public class StateController {
 
-    @Autowired
-    private StateService service;
+    private final StateService service;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<StateDTO> findById(@PathVariable Long id){

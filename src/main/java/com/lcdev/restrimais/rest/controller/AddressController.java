@@ -1,9 +1,8 @@
 package com.lcdev.restrimais.rest.controller;
 
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
-import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
 import com.lcdev.restrimais.service.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,11 +13,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "address")
 public class AddressController {
 
-    @Autowired
-    private AddressService service;
+    private final AddressService service;
 
     @PostMapping
     public ResponseEntity<AddressDTO> save(@RequestBody AddressDTO dto){
