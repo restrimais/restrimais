@@ -3,11 +3,12 @@ package com.lcdev.restrimais.service.impl;
 import com.lcdev.restrimais.domain.entities.City;
 import com.lcdev.restrimais.domain.entities.State;
 import com.lcdev.restrimais.repository.CityRepository;
+import com.lcdev.restrimais.repository.StateRepository;
 import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
 import com.lcdev.restrimais.service.CityService;
+import com.lcdev.restrimais.service.exceptions.CityAlreadyExistsException;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -22,18 +23,16 @@ import java.util.stream.Collectors;
 public class CityServiceImpl implements CityService {
 
     private final CityRepository repository;
+    private final StateRepository stateRepository;
 
     @Transactional
-    public CityStateDTO save(CityStateDTO dto){
-        City entity = new City();
-        entity.setName(dto.getName());
+    public CityStateDTO save(CityStateDTO dto) {
+        State state = findOrCreateState(dto.getState().getName());
+        validateCityNotExists(dto.getName(), state);
 
-        State state = new State();
-        state.setId(dto.getState().getId());
-        state.setName(dto.getState().getName());
-
-        entity.setState(state);
+        City entity = createCity(dto.getName(), state);
         entity = repository.save(entity);
+
         return new CityStateDTO(entity);
     }
 
@@ -51,21 +50,21 @@ public class CityServiceImpl implements CityService {
     }
 
     @Transactional
-    public CityStateDTO update(Long id, CityStateDTO dto){
-        try {
-            City entity = repository.getReferenceById(id);
-            entity.setName(dto.getName());
+    public CityStateDTO update(Long id, CityStateDTO dto) {
+        City entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado!"));
+        State state = findOrCreateState(dto.getState().getName());
 
-            State state = new State();
-            state.setId(dto.getState().getId());
-            state.setName(dto.getState().getName());
+        validateCityNotExists(dto.getName(), state);
+        updateCityEntity(entity, dto.getName(), state);
 
-            entity.setState(state);
-            entity = repository.save(entity);
-            return new CityStateDTO(entity);
-        }catch (EntityNotFoundException e){
-            throw new ResourceNotFoundException("Recurso não encontrado!");
-        }
+        entity = repository.save(entity);
+        return new CityStateDTO(entity);
+    }
+
+    private void updateCityEntity(City entity, String cityName, State state) {
+        entity.setName(cityName);
+        entity.setState(state);
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
@@ -79,4 +78,29 @@ public class CityServiceImpl implements CityService {
             throw new DatabaseException("Falha de integridade referencial!");
         }
     }
+
+    private State findOrCreateState(String stateName) {
+        State state = stateRepository.findByName(stateName);
+        if (state == null) {
+            state = new State();
+            state.setName(stateName);
+            state = stateRepository.save(state);
+        }
+        return state;
+    }
+
+    private void validateCityNotExists(String cityName, State state) {
+        City existingCity = repository.findByNameAndState(cityName, state);
+        if (existingCity != null) {
+            throw new CityAlreadyExistsException("A cidade com o mesmo nome já existe no mesmo estado.");
+        }
+    }
+
+    private City createCity(String cityName, State state) {
+        City city = new City();
+        city.setName(cityName);
+        city.setState(state);
+        return city;
+    }
+
 }

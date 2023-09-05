@@ -12,4 +12,6 @@ public interface StateRepository extends JpaRepository<State, Long> {
 
     @Query(value = "SELECT obj FROM State obj JOIN FETCH obj.cities WHERE obj IN :states")
     List<State> findStatesCities(List<State> states);
+
+    State findByName(String name);
 }

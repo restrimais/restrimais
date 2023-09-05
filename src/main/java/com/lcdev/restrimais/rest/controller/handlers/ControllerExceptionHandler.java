@@ -1,6 +1,7 @@
 package com.lcdev.restrimais.rest.controller.handlers;
 
 import com.lcdev.restrimais.rest.dto.CustomError;
+import com.lcdev.restrimais.service.exceptions.CityAlreadyExistsException;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +23,13 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(DatabaseException.class)
     public ResponseEntity<CustomError> dataBase(DatabaseException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(CityAlreadyExistsException.class)
+    public ResponseEntity<CustomError> dataBase(CityAlreadyExistsException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(err);
