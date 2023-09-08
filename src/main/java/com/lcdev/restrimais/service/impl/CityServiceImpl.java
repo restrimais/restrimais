@@ -79,7 +79,7 @@ public class CityServiceImpl implements CityService {
         }
     }
 
-    private State findOrCreateState(String stateName) {
+    public State findOrCreateState(String stateName) {
         State state = stateRepository.findByName(stateName);
         if (state == null) {
             state = new State();
@@ -96,7 +96,7 @@ public class CityServiceImpl implements CityService {
         }
     }
 
-    private City createCity(String cityName, State state) {
+    public City createCity(String cityName, State state) {
         City city = new City();
         city.setName(cityName);
         city.setState(state);

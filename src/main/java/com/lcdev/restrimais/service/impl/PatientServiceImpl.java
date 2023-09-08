@@ -4,19 +4,28 @@ import com.lcdev.restrimais.domain.entities.Address;
 import com.lcdev.restrimais.domain.entities.City;
 import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.domain.entities.State;
+import com.lcdev.restrimais.repository.CityRepository;
 import com.lcdev.restrimais.repository.PatientRepository;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
+import com.lcdev.restrimais.service.CityService;
 import com.lcdev.restrimais.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
 public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository repository;
+
+    private final CityRepository cityRepository;
+
+    private final CityService cityService;
+
 
     @Transactional()
     public PatientDTO save(PatientDTO dto) {
@@ -47,13 +56,11 @@ public class PatientServiceImpl implements PatientService {
             address.setNeighborhood(addressDTO.getNeighborhood());
             address.setCep(addressDTO.getCep());
 
-            City city = new City();
-            city.setName(addressDTO.getCity().getName());
+            State state = cityService.findOrCreateState(addressDTO.getCity().getState().getName());
+            City city = cityRepository.findByNameAndState(addressDTO.getCity().getName(), state);
 
-            State state = new State();
-            state.setName(addressDTO.getCity().getState().getName());
+            if (Objects.isNull(city)) city = cityService.createCity(addressDTO.getCity().getName(), state);
 
-            city.setState(state);
             address.setCity(city);
 
             entity.getAddresses().add(address);

@@ -1,5 +1,7 @@
 package com.lcdev.restrimais.service;
 
+import com.lcdev.restrimais.domain.entities.City;
+import com.lcdev.restrimais.domain.entities.State;
 import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
 
 import java.util.List;
@@ -11,4 +13,8 @@ public interface CityService {
     List<CityStateDTO> findAll();
     CityStateDTO update(Long id, CityStateDTO dto);
     void delete(Long id);
+
+    State findOrCreateState(String stateName);
+
+    City createCity(String cityName, State state);
 }
