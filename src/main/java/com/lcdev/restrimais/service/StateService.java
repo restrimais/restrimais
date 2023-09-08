@@ -1,5 +1,6 @@
 package com.lcdev.restrimais.service;
 
+import com.lcdev.restrimais.domain.entities.State;
 import com.lcdev.restrimais.rest.dto.state.StateCityDTO;
 import com.lcdev.restrimais.rest.dto.state.StateDTO;
 
@@ -12,4 +13,6 @@ public interface StateService {
     StateDTO save(StateDTO dto);
     StateDTO update(Long id, StateDTO dto);
     void delete(Long id);
+
+    State findOrCreateState(String stateName);
 }

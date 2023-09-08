@@ -69,4 +69,14 @@ public class StateServiceImpl implements StateService {
             throw new DatabaseException("Falha de integridade referencial!");
         }
     }
+
+    public State findOrCreateState(String stateName) {
+        State state = repository.findByName(stateName);
+        if (state == null) {
+            state = new State();
+            state.setName(stateName);
+            state = repository.save(state);
+        }
+        return state;
+    }
 }

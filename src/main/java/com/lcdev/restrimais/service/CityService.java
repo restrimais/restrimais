@@ -14,7 +14,7 @@ public interface CityService {
     CityStateDTO update(Long id, CityStateDTO dto);
     void delete(Long id);
 
-    State findOrCreateState(String stateName);
-
     City createCity(String cityName, State state);
+
+    City findByNameAndState(String name, State state);
 }
