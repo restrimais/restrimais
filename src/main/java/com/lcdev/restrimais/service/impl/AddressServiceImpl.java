@@ -6,6 +6,8 @@ import com.lcdev.restrimais.domain.entities.State;
 import com.lcdev.restrimais.repository.AddressRepository;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.service.AddressService;
+import com.lcdev.restrimais.service.CityService;
+import com.lcdev.restrimais.service.StateService;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,11 +17,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository repository;
+
+    private final StateService stateService;
+
+    private final CityService cityService;
 
     @Transactional
     public AddressDTO save(AddressDTO dto){
@@ -70,14 +78,13 @@ public class AddressServiceImpl implements AddressService {
         entity.setNeighborhood(dto.getNeighborhood());
         entity.setCep(dto.getCep());
 
-        City city = new City();
-        city.setId(dto.getCity().getId());
-        city.setName(dto.getCity().getName());
+        State state = stateService.findOrCreateState(dto.getCity().getState().getName());
+
+        City city = cityService.findByNameAndState(dto.getCity().getName(), state);
+
+        if (Objects.isNull(city)) city = cityService.createCity(dto.getCity().getName(), state);
+
         entity.setCity(city);
 
-        State state = new State();
-        state.setId(dto.getCity().getState().getId());
-        state.setName(dto.getCity().getState().getName());
-        entity.getCity().setState(state);
     }
 }
