@@ -1,9 +1,6 @@
 package com.lcdev.restrimais.domain.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -23,8 +20,8 @@ public class Patient extends User{
     private Double height;
     private Double weight;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private Set<Address> addresses = new HashSet<>();
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(mappedBy = "patient")
     private Set<Restriction> restrictions = new HashSet<>();
@@ -34,4 +31,5 @@ public class Patient extends User{
 
     @OneToMany(mappedBy = "patient")
     private Set<Query> queries = new HashSet<>();
+
 }

@@ -3,6 +3,7 @@ package com.lcdev.restrimais.service.impl;
 import com.lcdev.restrimais.domain.entities.Address;
 import com.lcdev.restrimais.domain.entities.City;
 import com.lcdev.restrimais.domain.entities.State;
+import com.lcdev.restrimais.mapper.AddressMapper;
 import com.lcdev.restrimais.repository.AddressRepository;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.service.AddressService;
@@ -25,14 +26,15 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository repository;
 
+    private final AddressMapper addressMapper;
+
     private final StateService stateService;
 
     private final CityService cityService;
 
     @Transactional
     public AddressDTO save(AddressDTO dto){
-        Address entity = new Address();
-        copyDtoToEntity(dto, entity);
+        Address entity = addressMapper.mapAddress(dto);
         entity = repository.save(entity);
         return new AddressDTO(entity);
     }
@@ -50,7 +52,7 @@ public class AddressServiceImpl implements AddressService {
         try {
             Address entity = repository.getReferenceById(id);
 
-            copyDtoToEntity(dto, entity);
+            addressMapper.mapAddress(dto);
             entity = repository.save(entity);
             return new AddressDTO(entity);
 
@@ -71,7 +73,8 @@ public class AddressServiceImpl implements AddressService {
         }
     }
 
-    public void copyDtoToEntity(AddressDTO dto ,Address entity){
+    @Override
+    public void copyDtoToEntity(AddressDTO dto, Address entity) {
         entity.setStreet(dto.getStreet());
         entity.setNumber(dto.getNumber());
         entity.setComplement(dto.getComplement());
@@ -85,6 +88,6 @@ public class AddressServiceImpl implements AddressService {
         if (Objects.isNull(city)) city = cityService.createCity(dto.getCity().getName(), state);
 
         entity.setCity(city);
-
     }
+
 }

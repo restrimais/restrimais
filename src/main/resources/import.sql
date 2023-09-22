@@ -28,7 +28,7 @@ INSERT INTO tb_city (name, state_id) VALUES ('Jundiaí', 1);
 INSERT INTO tb_city (name, state_id) VALUES ('Cambuí', 2);
 INSERT INTO tb_city (name, state_id) VALUES ('Angra dos Reis', 3);
 
-INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, patient_id, nutritionist_id) VALUES ('Rua Ministro Nelson Hungria', '108', 'Casa', 'Jardim Luzia', '49045-510', 1, 2, null);
+INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, patient_id, nutritionist_id) VALUES ('Rua Ministro Nelson Hungria', '108', 'Casa', 'Jardim Luzia', '49045-510', 1, 1, null);
 INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, patient_id, nutritionist_id) VALUES ('Avenida Joa Silva', '16', 'Apartamento', 'Monte Verde', '69906-470', 2, null, 1);
 INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, patient_id, nutritionist_id) VALUES ('Avenida Ferroviarios', '17', 'Casa', 'Jardim Barros', '49045-234', 3, 2, null);
 

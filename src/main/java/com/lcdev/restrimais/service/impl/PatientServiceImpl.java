@@ -1,15 +1,21 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.Address;
 import com.lcdev.restrimais.domain.entities.Patient;
+import com.lcdev.restrimais.mapper.PatientMapper;
 import com.lcdev.restrimais.repository.PatientRepository;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
+import com.lcdev.restrimais.rest.dto.patient.PatientAddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
-import com.lcdev.restrimais.service.AddressService;
 import com.lcdev.restrimais.service.PatientService;
+import com.lcdev.restrimais.service.exceptions.DatabaseException;
+import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,35 +23,52 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository repository;
 
-    private final AddressService addressService;
-
+    private final PatientMapper patientMapper;
 
     @Transactional
-    public PatientDTO save(PatientDTO dto) {
-        Patient entity = new Patient();
-        copyDtoToEntity(dto, entity);
+    public PatientAddressDTO save(PatientAddressDTO dto) {
+        Patient entity = patientMapper.mapPatientAdress(dto);
+        entity = repository.save(entity);
+        return new PatientAddressDTO(entity);
+    }
 
+    @Override
+    @Transactional
+    public PatientDTO update(Long id, PatientDTO dto){
+        Patient entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado."));
+        patientMapper.mapPatient(dto, entity);
         entity = repository.save(entity);
         return new PatientDTO(entity);
     }
 
-    public void copyDtoToEntity(PatientDTO dto, Patient entity) {
-        entity.setName(dto.getName());
-        entity.setEmail(dto.getEmail());
-        entity.setBirthDate(dto.getBirthDate());
-        entity.setPassword(dto.getPassword());
-        entity.setCpf(dto.getCpf());
-        entity.setGender(dto.getGender());
-        entity.setProfileImg(dto.getProfileImg());
-        entity.setPhone(dto.getPhone());
-        entity.setHeight(dto.getHeight());
-        entity.setWeight(dto.getWeight());
+    @Override
+    @Transactional(readOnly = true)
+    public PatientAddressDTO findById(Long id){
+        Patient entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado."));
 
-        for (AddressDTO addressDTO : dto.getAddress()) {
-            Address address = new Address();
-            addressService.copyDtoToEntity(addressDTO, address);
+        return new PatientAddressDTO(entity);
+    }
 
-            entity.getAddresses().add(address);
+    @Override
+    @Transactional(readOnly = true)
+    public List<PatientDTO> findAll() {
+        List<Patient> result = repository.findAll();
+        return result.stream().map(PatientDTO::new).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new ResourceNotFoundException("Recurso não encontrado!");
+        }
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Falha de integridade referencial!");
         }
     }
+
 }

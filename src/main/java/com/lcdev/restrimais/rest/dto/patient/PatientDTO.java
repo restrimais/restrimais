@@ -2,15 +2,11 @@ package com.lcdev.restrimais.rest.dto.patient;
 
 import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.domain.enums.Gender;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -28,7 +24,6 @@ public class PatientDTO {
     private String phone;
     private Double height;
     private Double weight;
-    private List<AddressDTO> address = new ArrayList<>();
 
     public PatientDTO(Patient entity){
         id = entity.getId();
@@ -42,6 +37,6 @@ public class PatientDTO {
         phone = entity.getPhone();
         height = entity.getHeight();
         weight = entity.getWeight();
-        address = entity.getAddresses().stream().map(AddressDTO::new).collect(Collectors.toList());
     }
+
 }

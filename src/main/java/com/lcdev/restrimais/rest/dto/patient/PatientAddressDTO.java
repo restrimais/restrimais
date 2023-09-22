@@ -1,9 +1,10 @@
-package com.lcdev.restrimais.rest.dto.nutritionist;
+package com.lcdev.restrimais.rest.dto.patient;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
+import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.domain.enums.Gender;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,9 +14,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class NutritionistDTO {
+public class PatientAddressDTO {
 
     private Long id;
     private String name;
@@ -26,12 +28,11 @@ public class NutritionistDTO {
     private Gender gender;
     private String profileImg;
     private String phone;
-    private String crn;
-    private String specialization;
-    private String academicDegree;
-    private String biography;
+    private Double height;
+    private Double weight;
+    private List<AddressDTO> address = new ArrayList<>();
 
-    public NutritionistDTO(Nutritionist entity){
+    public PatientAddressDTO(Patient entity){
         id = entity.getId();
         name = entity.getName();
         email = entity.getEmail();
@@ -41,10 +42,8 @@ public class NutritionistDTO {
         gender = entity.getGender();
         profileImg = entity.getProfileImg();
         phone = entity.getPhone();
-        crn = entity.getCrn();
-        specialization = entity.getSpecialization();
-        academicDegree = entity.getAcademicDegree();
-        biography = entity.getBiography();
+        height = entity.getHeight();
+        weight = entity.getWeight();
+        address = entity.getAddresses().stream().map(AddressDTO::new).collect(Collectors.toList());
     }
-
 }

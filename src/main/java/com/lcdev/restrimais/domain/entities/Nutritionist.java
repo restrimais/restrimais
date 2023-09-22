@@ -1,9 +1,6 @@
 package com.lcdev.restrimais.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -27,8 +24,8 @@ public class Nutritionist extends User{
     @Column(columnDefinition = "TEXT")
     private String biography;
 
-    @OneToMany(mappedBy = "nutritionist")
-    private Set<Address> addresses = new HashSet<>();
+    @OneToMany(mappedBy = "nutritionist", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(mappedBy = "nutritionist")
     private List<ProfessionalExperience> experiences = new ArrayList<>();

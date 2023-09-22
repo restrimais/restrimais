@@ -23,6 +23,7 @@ public class StateServiceImpl implements StateService {
 
     private final StateRepository repository;
 
+    @Override
     @Transactional(readOnly = true)
     public StateDTO findById(Long id){
         State state = repository.findById(id).orElseThrow(
@@ -30,6 +31,7 @@ public class StateServiceImpl implements StateService {
         return new StateDTO(state);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<StateCityDTO> findAll(){
         List<State> result = repository.findAll();
@@ -37,7 +39,7 @@ public class StateServiceImpl implements StateService {
         return result.stream().map(StateCityDTO::new).collect(Collectors.toList());
     }
 
-
+    @Override
     public StateDTO save(StateDTO dto){
         State entity = new State();
         entity.setName(dto.getName());
@@ -45,6 +47,7 @@ public class StateServiceImpl implements StateService {
         return new StateDTO(entity);
     }
 
+    @Override
     @Transactional()
     public StateDTO update(Long id, StateDTO dto){
         try {
@@ -57,6 +60,7 @@ public class StateServiceImpl implements StateService {
         }
     }
 
+    @Override
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
         if (!repository.existsById(id)) {
@@ -70,6 +74,7 @@ public class StateServiceImpl implements StateService {
         }
     }
 
+    @Override
     public State findOrCreateState(String stateName) {
         State state = repository.findByName(stateName);
         if (state == null) {

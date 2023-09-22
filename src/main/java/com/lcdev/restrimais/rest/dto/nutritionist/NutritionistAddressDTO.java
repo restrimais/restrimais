@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NutritionistDTO {
+public class NutritionistAddressDTO {
 
     private Long id;
     private String name;
@@ -31,7 +31,9 @@ public class NutritionistDTO {
     private String academicDegree;
     private String biography;
 
-    public NutritionistDTO(Nutritionist entity){
+    private List<AddressDTO> address = new ArrayList<>();
+
+    public NutritionistAddressDTO(Nutritionist entity){
         id = entity.getId();
         name = entity.getName();
         email = entity.getEmail();
@@ -45,6 +47,6 @@ public class NutritionistDTO {
         specialization = entity.getSpecialization();
         academicDegree = entity.getAcademicDegree();
         biography = entity.getBiography();
+        address = entity.getAddresses().stream().map(AddressDTO::new).collect(Collectors.toList());
     }
-
 }
