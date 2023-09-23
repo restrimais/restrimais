@@ -30,7 +30,6 @@ public class AddressMapperImpl implements AddressMapper {
         entity.setCep(dto.getCep());
 
         State state = stateService.findOrCreateState(dto.getCity().getState().getName());
-
         City city = cityService.findByNameAndState(dto.getCity().getName(), state);
 
         if (Objects.isNull(city)) city = cityService.createCity(dto.getCity().getName(), state);

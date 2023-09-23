@@ -35,6 +35,7 @@ public class NutritionistMapperImpl implements NutritionistMapper {
 
         for (AddressDTO addressDTO : dto.getAddress()) {
             Address address = addressMapper.mapAddress(addressDTO);
+            address.setNutritionist(entity);
             entity.getAddresses().add(address);
 
         }
@@ -45,7 +46,6 @@ public class NutritionistMapperImpl implements NutritionistMapper {
     @Override
     public Nutritionist mapNutritionist(NutritionistDTO dto, Nutritionist entity) {
 
-//        Nutritionist entity = new Nutritionist();
         entity.setName(dto.getName());
         entity.setEmail(dto.getEmail());
         entity.setBirthDate(dto.getBirthDate());

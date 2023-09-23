@@ -33,6 +33,7 @@ public class PatientMapperImpl implements PatientMapper {
 
         for (AddressDTO addressDTO : dto.getAddress()) {
             Address address = addressMapper.mapAddress(addressDTO);
+            address.setPatient(entity);
             entity.getAddresses().add(address);
         }
 

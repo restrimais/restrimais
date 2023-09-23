@@ -18,8 +18,7 @@ public class AddressDTO {
     private String neighborhood;
     private String cep;
     private CityStateDTO city;
-//    private Long patientId;
-//    private Long nutritionistId;
+
 
     public AddressDTO(Address entity){
         id = entity.getId();
@@ -29,7 +28,5 @@ public class AddressDTO {
         neighborhood = entity.getNeighborhood();
         cep = entity.getCep();
         city = new CityStateDTO(entity.getCity());
-//        patientId = entity.getPatient().getId();
-//        nutritionistId = entity.getNutritionist().getId();
     }
 }
