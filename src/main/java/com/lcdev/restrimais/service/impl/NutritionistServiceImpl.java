@@ -3,8 +3,10 @@ package com.lcdev.restrimais.service.impl;
 import com.lcdev.restrimais.domain.entities.Nutritionist;
 import com.lcdev.restrimais.mapper.NutritionistMapper;
 import com.lcdev.restrimais.repository.NutritionistRepository;
+import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
+import com.lcdev.restrimais.service.AddressService;
 import com.lcdev.restrimais.service.NutritionistService;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
@@ -25,9 +27,16 @@ public class NutritionistServiceImpl implements NutritionistService {
 
     private final NutritionistMapper nutritionistMapper;
 
+    private final AddressService addressService;
+
     @Transactional
     public NutritionistAddressDTO save(NutritionistAddressDTO dto){
         Nutritionist entity = nutritionistMapper.mapNutritionistAdress(dto);
+
+        for (AddressDTO addressDTO : dto.getAddress()) {
+            entity.getAddresses().add(addressService.persistAddress(addressDTO, null, entity));
+        }
+
         entity = repository.save(entity);
         return new NutritionistAddressDTO(entity);
     }

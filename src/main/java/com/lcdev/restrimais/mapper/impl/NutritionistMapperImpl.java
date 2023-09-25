@@ -1,7 +1,9 @@
 package com.lcdev.restrimais.mapper.impl;
 
 import com.lcdev.restrimais.domain.entities.Address;
+import com.lcdev.restrimais.domain.entities.City;
 import com.lcdev.restrimais.domain.entities.Nutritionist;
+import com.lcdev.restrimais.domain.entities.State;
 import com.lcdev.restrimais.mapper.AddressMapper;
 import com.lcdev.restrimais.mapper.NutritionistMapper;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
@@ -9,6 +11,8 @@ import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -32,13 +36,6 @@ public class NutritionistMapperImpl implements NutritionistMapper {
         entity.setSpecialization(dto.getSpecialization());
         entity.setAcademicDegree(dto.getAcademicDegree());
         entity.setBiography(dto.getBiography());
-
-        for (AddressDTO addressDTO : dto.getAddress()) {
-            Address address = addressMapper.mapAddress(addressDTO);
-            address.setNutritionist(entity);
-            entity.getAddresses().add(address);
-
-        }
 
         return entity;
     }

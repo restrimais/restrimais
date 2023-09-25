@@ -1,10 +1,8 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Address;
 import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.mapper.AddressMapper;
 import com.lcdev.restrimais.mapper.PatientMapper;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientAddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
 import lombok.RequiredArgsConstructor;
@@ -30,12 +28,6 @@ public class PatientMapperImpl implements PatientMapper {
         entity.setPhone(dto.getPhone());
         entity.setHeight(dto.getHeight());
         entity.setWeight(dto.getWeight());
-
-        for (AddressDTO addressDTO : dto.getAddress()) {
-            Address address = addressMapper.mapAddress(addressDTO);
-            address.setPatient(entity);
-            entity.getAddresses().add(address);
-        }
 
         return entity;
     }
