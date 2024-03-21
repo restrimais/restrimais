@@ -27,6 +27,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
+    @Transactional()
     public CategoryDTO save(CategoryDTO dto) {
         Category entity = repository.save(categoryMapper.mapCategory(dto));
         return new CategoryDTO(entity);

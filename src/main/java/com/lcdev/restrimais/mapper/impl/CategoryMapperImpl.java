@@ -10,11 +10,9 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CategoryMapperImpl implements CategoryMapper {
 
-
     @Override
     public Category mapCategory(CategoryDTO dto) {
         Category entity = new Category();
-        entity.setId(dto.getId());
         entity.setName(dto.getName());
         return entity;
     }
