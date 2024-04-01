@@ -4,13 +4,13 @@ import com.lcdev.restrimais.domain.entities.Category;
 import com.lcdev.restrimais.domain.entities.Restriction;
 import com.lcdev.restrimais.mapper.RestrictionMapper;
 import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
-import com.lcdev.restrimais.rest.dto.restriction.RestrictionDTO;
+import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RestrictionMapperImpl implements RestrictionMapper {
     @Override
-    public Restriction mapRestriction(RestrictionDTO dto) {
+    public Restriction mapRestriction(RestrictionMinDTO dto) {
         Restriction entity = new Restriction();
 
         entity.setName(dto.getName());

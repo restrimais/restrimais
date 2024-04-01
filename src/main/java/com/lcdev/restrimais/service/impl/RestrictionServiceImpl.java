@@ -1,9 +1,10 @@
 package com.lcdev.restrimais.service.impl;
 
+import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.domain.entities.Restriction;
 import com.lcdev.restrimais.mapper.RestrictionMapper;
 import com.lcdev.restrimais.repository.RestrictionRepository;
-import com.lcdev.restrimais.rest.dto.restriction.RestrictionDTO;
+import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
 import com.lcdev.restrimais.service.RestrictionService;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -22,24 +23,31 @@ public class RestrictionServiceImpl implements RestrictionService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<RestrictionDTO> findAll() {
+    public List<RestrictionMinDTO> findAll() {
         List<Restriction> result = repository.findAll();
-        return result.stream().map(RestrictionDTO::new).toList();
+        return result.stream().map(RestrictionMinDTO::new).toList();
     }
 
     @Override
     @Transactional()
-    public RestrictionDTO save(RestrictionDTO dto) {
+    public RestrictionMinDTO save(RestrictionMinDTO dto) {
         Restriction entity = repository.save(restrictionMapper.mapRestriction(dto));
-        return new RestrictionDTO(entity);
+        return new RestrictionMinDTO(entity);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public RestrictionDTO findById(Long id){
+    public RestrictionMinDTO findById(Long id){
         Restriction restriction = repository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Recurso não encontrado!"));
-        return new RestrictionDTO(restriction);
+        return new RestrictionMinDTO(restriction);
     }
 
+    @Override
+    @Transactional()
+    public Restriction persistRestriction(RestrictionMinDTO dto, Patient patient) {
+        Restriction restriction = repository.save(restrictionMapper.mapRestriction(dto));
+        restriction.setPatient(patient);
+        return restriction;
+    }
 }

@@ -2,12 +2,15 @@ package com.lcdev.restrimais.service.impl;
 
 import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.mapper.PatientMapper;
+import com.lcdev.restrimais.mapper.RestrictionMapper;
 import com.lcdev.restrimais.repository.PatientRepository;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientAddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
+import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
 import com.lcdev.restrimais.service.AddressService;
 import com.lcdev.restrimais.service.PatientService;
+import com.lcdev.restrimais.service.RestrictionService;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +32,20 @@ public class PatientServiceImpl implements PatientService {
 
     private final AddressService addressService;
 
+    private final RestrictionService restrictionService;
+
+    private final RestrictionMapper restrictionMapper;
+
     @Transactional
     public PatientAddressDTO save(PatientAddressDTO dto) {
         Patient entity = patientMapper.mapPatientAdress(dto);
 
         for (AddressDTO addressDTO : dto.getAddress()) {
             entity.getAddresses().add(addressService.persistAddress(addressDTO, entity, null));
+        }
+
+        for (RestrictionMinDTO restrictionMinDTO: dto.getRestrictions()){
+            entity.getRestrictions().add(restrictionService.persistRestriction(restrictionMinDTO, entity));
         }
 
         entity = repository.save(entity);

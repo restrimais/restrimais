@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.rest.controller;
 
-import com.lcdev.restrimais.rest.dto.restriction.RestrictionDTO;
+import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
 import com.lcdev.restrimais.service.RestrictionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,19 +17,19 @@ public class RestrictionController {
 
     private final RestrictionService service;
     @GetMapping
-    public ResponseEntity<List<RestrictionDTO>> findAll(){
-        List<RestrictionDTO> list = service.findAll();
+    public ResponseEntity<List<RestrictionMinDTO>> findAll(){
+        List<RestrictionMinDTO> list = service.findAll();
         return ResponseEntity.ok(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<RestrictionDTO> findById(@PathVariable Long id){
-        RestrictionDTO dto = service.findById(id);
+    public ResponseEntity<RestrictionMinDTO> findById(@PathVariable Long id){
+        RestrictionMinDTO dto = service.findById(id);
         return ResponseEntity.ok(dto);
     }
 
     @PostMapping
-    public ResponseEntity<RestrictionDTO> save(@RequestBody RestrictionDTO dto){
+    public ResponseEntity<RestrictionMinDTO> save(@RequestBody RestrictionMinDTO dto){
         dto = service.save(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();

@@ -13,12 +13,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestrictionDTO {
+public class RestrictionMinDTO {
 
     private Long id;
     private String name;
     private List<CategoryDTO> categories = new ArrayList<>();
-    public RestrictionDTO(Restriction entity){
+    public RestrictionMinDTO(Restriction entity){
         id = entity.getId();
         name = entity.getName();
         for (Category cat : entity.getCategories()){

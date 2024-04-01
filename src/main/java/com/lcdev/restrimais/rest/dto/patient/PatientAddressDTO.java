@@ -3,6 +3,7 @@ package com.lcdev.restrimais.rest.dto.patient;
 import com.lcdev.restrimais.domain.entities.Patient;
 import com.lcdev.restrimais.domain.enums.Gender;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
+import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +32,7 @@ public class PatientAddressDTO {
     private Double height;
     private Double weight;
     private List<AddressDTO> address = new ArrayList<>();
+    private List<RestrictionMinDTO> restrictions = new ArrayList<>();
 
     public PatientAddressDTO(Patient entity){
         id = entity.getId();
@@ -45,5 +47,6 @@ public class PatientAddressDTO {
         height = entity.getHeight();
         weight = entity.getWeight();
         address = entity.getAddresses().stream().map(AddressDTO::new).collect(Collectors.toList());
+        restrictions = entity.getRestrictions().stream().map(RestrictionMinDTO::new).collect(Collectors.toList());
     }
 }
