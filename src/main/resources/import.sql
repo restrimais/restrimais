@@ -38,8 +38,8 @@ INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, p
 INSERT INTO tb_preparation (step, time, observation) VALUES ('1 - Lave e escorra bem a alface e as ervas frescas. 2 - Corte os tomates em fatias finas e os pepinos em rodelas. 3 -Misture a alface, tomates, pepinos e cenouras raladas em uma tigela grande.', '5 minutos', 'Sal a gosto!');
 INSERT INTO tb_preparation (step, time, temperature, observation) VALUES ('1 - Pré-aqueça o forno a 180°C. Unte e enfarinhe uma forma de bolo. 2 - No liquidificador, bata as cenouras picadas, os ovos, o óleo e a essência de baunilha até obter uma mistura homogênea.', '20 minutos', '180º', 'Rende até 8 pessoas.');
 
-INSERT INTO tb_revenue (name, img, description, preparation_id) VALUES ('Salada ', 'link da img','Desfrute de uma salada especial fresca e colorida, repleta de ingredientes da estação. Delicie-se com a combinação de vegetais crocantes, ervas aromáticas e um molho irresistível, criando uma explosão de sabores em cada garfada. Uma opção saudável e deliciosa para satisfazer o seu paladar.', 1);
-INSERT INTO tb_revenue (name, img, description, preparation_id) VALUES ('Bolo de cenoura sem gluten ', 'link da img','Desfrute desse bolo delicioso.', 2);
+INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Salada ', 'link da img','Desfrute de uma salada especial fresca e colorida, repleta de ingredientes da estação. Delicie-se com a combinação de vegetais crocantes, ervas aromáticas e um molho irresistível, criando uma explosão de sabores em cada garfada. Uma opção saudável e deliciosa para satisfazer o seu paladar.', 1);
+INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Bolo de cenoura sem gluten ', 'link da img','Desfrute desse bolo delicioso.', 2);
 
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 Alface fresca; 2 Tomates maduros; 3 Pepinos cortados; 1 Cenouras raladas;', 1);
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 cenouras grandes, descascadas e picadas; 3 ovos; 1 xícara de óleo vegetal; 2 xícaras de açúcar;', 2);
