@@ -41,8 +41,14 @@ INSERT INTO tb_preparation (step, time, temperature, observation) VALUES ('1 - P
 INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Salada ', 'link da img','Desfrute de uma salada especial fresca e colorida, repleta de ingredientes da estação. Delicie-se com a combinação de vegetais crocantes, ervas aromáticas e um molho irresistível, criando uma explosão de sabores em cada garfada. Uma opção saudável e deliciosa para satisfazer o seu paladar.', 1);
 INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Bolo de cenoura sem gluten ', 'link da img','Desfrute desse bolo delicioso.', 2);
 
-INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 Alface fresca; 2 Tomates maduros; 3 Pepinos cortados; 1 Cenouras raladas;', 1);
-INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 cenouras grandes, descascadas e picadas; 3 ovos; 1 xícara de óleo vegetal; 2 xícaras de açúcar;', 2);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 Alface fresca', 1);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 Tomates maduros', 1);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('3 Pepinos cortados', 1);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 Cenoura ralada', 1);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 cenouras grandes, descascadas e picadas', 2);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('3 ovos', 2);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 xícara de óleo vegetal', 2);
+INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 xícaras de açúcar', 2);
 
 INSERT INTO tb_assessment (score, comment, patient_id, nutritionist_id) VALUES (4.5, 'Muito bom profissional, atencionoso e educado!', 1, 1);
 INSERT INTO tb_assessment (score, comment, patient_id, revenue_id) VALUES (5.0, 'Receita maravilhosa', 1, 2);

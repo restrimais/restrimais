@@ -5,6 +5,7 @@ import com.lcdev.restrimais.repository.RevenueRepository;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueDTO;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
 import com.lcdev.restrimais.service.RevenueService;
+import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,8 +36,11 @@ public class RevenueServiceImpl implements RevenueService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public RevenueDTO findById(Long id) {
-        return null;
+        Revenue entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado!"));
+        return new RevenueDTO(entity);
     }
 
     @Override
