@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface RevenueRepository extends JpaRepository<Revenue, Long> {
 
     @Query("SELECT obj FROM Revenue obj " +
-            "WHERE UPPER(obj.title) LIKE UPPER(CONCAT('%', :title, '%'))")
+            "LEFT JOIN obj.categories c " +
+            "WHERE UPPER(obj.title) LIKE UPPER(CONCAT('%', :title, '%'))" +
+            "OR UPPER(c.name) LIKE UPPER(CONCAT('%', :title, '%'))")
     Page<Revenue> searchByName(String title, Pageable pageable);
 }

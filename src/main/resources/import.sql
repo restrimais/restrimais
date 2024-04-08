@@ -52,3 +52,7 @@ INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 xícaras de açúc
 
 INSERT INTO tb_assessment (score, comment, patient_id, nutritionist_id) VALUES (4.5, 'Muito bom profissional, atencionoso e educado!', 1, 1);
 INSERT INTO tb_assessment (score, comment, patient_id, revenue_id) VALUES (5.0, 'Receita maravilhosa', 1, 2);
+
+INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (1, 1);
+INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (1, 2);
+INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (2, 2);

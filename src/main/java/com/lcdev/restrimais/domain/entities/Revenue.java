@@ -34,6 +34,12 @@ public class Revenue {
     @OneToMany(mappedBy = "revenue",  fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ingredient> ingredients = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "tb_revenue_category",
+            joinColumns = @JoinColumn(name = "revenue_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

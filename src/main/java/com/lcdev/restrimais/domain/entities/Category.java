@@ -21,6 +21,9 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Restriction> restrictions = new HashSet<>();
 
+    @ManyToMany(mappedBy = "categories")
+    private Set<Revenue> revenues = new HashSet<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
