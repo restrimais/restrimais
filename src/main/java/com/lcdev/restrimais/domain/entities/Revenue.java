@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.*;
 
@@ -32,8 +31,8 @@ public class Revenue {
     @MapsId
     private Preparation preparation;
 
-    @OneToMany(mappedBy = "revenue")
-    private Set<Ingredients> ingredients = new HashSet<>();
+    @OneToMany(mappedBy = "revenue",  fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

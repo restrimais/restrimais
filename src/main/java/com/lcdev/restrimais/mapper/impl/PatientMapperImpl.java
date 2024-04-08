@@ -1,7 +1,6 @@
 package com.lcdev.restrimais.mapper.impl;
 
 import com.lcdev.restrimais.domain.entities.Patient;
-import com.lcdev.restrimais.mapper.AddressMapper;
 import com.lcdev.restrimais.mapper.PatientMapper;
 import com.lcdev.restrimais.rest.dto.patient.PatientAddressDTO;
 import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class PatientMapperImpl implements PatientMapper {
-
-    private final AddressMapper addressMapper;
 
     @Override
     public Patient mapPatientAdress(PatientAddressDTO dto) {

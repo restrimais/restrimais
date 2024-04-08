@@ -1,14 +1,19 @@
 package com.lcdev.restrimais.domain.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Objects;
+
 @Data
-@ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_ingredients")
-public class Ingredients {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +25,5 @@ public class Ingredients {
     @ManyToOne
     @JoinColumn(name = "revenue_id")
     private Revenue revenue;
+
 }

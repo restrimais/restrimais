@@ -1,6 +1,7 @@
 package com.lcdev.restrimais.service.impl;
 
 import com.lcdev.restrimais.domain.entities.Revenue;
+import com.lcdev.restrimais.mapper.RevenueMapper;
 import com.lcdev.restrimais.repository.RevenueRepository;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueDTO;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
@@ -18,9 +19,15 @@ public class RevenueServiceImpl implements RevenueService {
 
     private final RevenueRepository repository;
 
+    private final RevenueMapper revenueMapper;
+
     @Override
+    @Transactional()
     public RevenueDTO save(RevenueDTO dto) {
-        return null;
+        Revenue entity = revenueMapper.mapRevenue(dto);
+
+        entity = repository.save(entity);
+        return new RevenueDTO(entity);
     }
 
     @Override
