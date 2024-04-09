@@ -35,8 +35,15 @@ INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, p
 INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, patient_id) VALUES ('2023-08-10T14:30:00', 1, 'Consulta para avaliação', 179.90, 1, 2);
 INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, patient_id) VALUES ('2023-09-10T18:30:00', 1, 'Sem observação', 100.0, 1, 1);
 
-INSERT INTO tb_preparation (step, time, observation) VALUES ('1 - Lave e escorra bem a alface e as ervas frescas. 2 - Corte os tomates em fatias finas e os pepinos em rodelas. 3 -Misture a alface, tomates, pepinos e cenouras raladas em uma tigela grande.', '5 minutos', 'Sal a gosto!');
-INSERT INTO tb_preparation (step, time, temperature, observation) VALUES ('1 - Pré-aqueça o forno a 180°C. Unte e enfarinhe uma forma de bolo. 2 - No liquidificador, bata as cenouras picadas, os ovos, o óleo e a essência de baunilha até obter uma mistura homogênea.', '20 minutos', '180º', 'Rende até 8 pessoas.');
+INSERT INTO tb_preparation (time, observation) VALUES ('5 minutos', 'Sal a gosto!');
+INSERT INTO tb_preparation (time, temperature, observation) VALUES ('20 minutos', '180º', 'Rende até 8 pessoas.');
+
+INSERT INTO tb_step (step, preparation_id) VALUES ('1 - Lave e escorra bem a alface e as ervas frescas.', 1);
+INSERT INTO tb_step (step, preparation_id) VALUES ('2 - Corte os tomates em fatias finas e os pepinos em rodelas.', 1);
+INSERT INTO tb_step (step, preparation_id) VALUES ('3 - Misture a alface, tomates, pepinos e cenouras raladas em uma tigela grande.', 1);
+
+INSERT INTO tb_step (step, preparation_id) VALUES ('1 - Pré-aqueça o forno a 180°C. Unte e enfarinhe uma forma de bolo', 2);
+INSERT INTO tb_step (step, preparation_id) VALUES ('2 - No liquidificador, bata as cenouras picadas, os ovos, o óleo e a essência de baunilha até obter uma mistura homogênea.', 2);
 
 INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Salada ', 'link da img','Desfrute de uma salada especial fresca e colorida, repleta de ingredientes da estação. Delicie-se com a combinação de vegetais crocantes, ervas aromáticas e um molho irresistível, criando uma explosão de sabores em cada garfada. Uma opção saudável e deliciosa para satisfazer o seu paladar.', 1);
 INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Bolo de cenoura sem gluten ', 'link da img','Desfrute desse bolo delicioso.', 2);

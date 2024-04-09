@@ -1,13 +1,12 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Category;
-import com.lcdev.restrimais.domain.entities.Ingredient;
-import com.lcdev.restrimais.domain.entities.Preparation;
-import com.lcdev.restrimais.domain.entities.Revenue;
+import com.lcdev.restrimais.domain.entities.*;
 import com.lcdev.restrimais.mapper.RevenueMapper;
 import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
 import com.lcdev.restrimais.rest.dto.ingredients.IngredientsDTO;
+import com.lcdev.restrimais.rest.dto.preparetion.PreparetionDTO;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueDTO;
+import com.lcdev.restrimais.rest.dto.steps.StepDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -40,13 +39,17 @@ public class RevenueMapperImpl implements RevenueMapper {
 
         preparation.setRevenue(entity);
         preparation.setTime(dto.getPreparetion().getTime());
-        preparation.setStep(dto.getPreparetion().getStep());
         preparation.setTemperature(dto.getPreparetion().getTemperature());
         preparation.setObservation(dto.getPreparetion().getObservation());
 
+        for (StepDTO stepDTO : dto.getPreparetion().getSteps()){
+            Step step = new Step();
+            step.setStep(stepDTO.getStep());
+            step.setPreparation(preparation);
+            preparation.getSteps().add(step);
+        }
+
         entity.setPreparation(preparation);
-
-
 
         return entity;
     }
