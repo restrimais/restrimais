@@ -27,9 +27,6 @@ public class Patient extends User{
     private Set<Restriction> restrictions = new HashSet<>();
 
     @OneToMany(mappedBy = "patient")
-    private List<Assessment> assessments = new ArrayList<>();
-
-    @OneToMany(mappedBy = "patient")
     private Set<Query> queries = new HashSet<>();
 
 }

@@ -20,6 +20,8 @@ public class RevenueMapperImpl implements RevenueMapper {
         entity.setTitle(dto.getTitle());
         entity.setImg(dto.getImg());
         entity.setDescription(dto.getDescription());
+        entity.setCount(dto.getCount());
+        entity.setScore(dto.getScore());
 
         entity.getCategories().clear();
         for (CategoryDTO categoryDTO : dto.getCategories()){

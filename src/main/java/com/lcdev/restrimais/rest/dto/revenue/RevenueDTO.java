@@ -1,7 +1,6 @@
 package com.lcdev.restrimais.rest.dto.revenue;
 
 import com.lcdev.restrimais.domain.entities.Category;
-import com.lcdev.restrimais.domain.entities.Restriction;
 import com.lcdev.restrimais.domain.entities.Revenue;
 import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
 import com.lcdev.restrimais.rest.dto.ingredients.IngredientsDTO;
@@ -23,6 +22,8 @@ public class RevenueDTO {
     private String title;
     private String img;
     private String description;
+    private Double score;
+    private Integer count;
     private PreparetionDTO preparetion;
     private List<IngredientsDTO> ingredients = new ArrayList<>();
     private List<CategoryDTO> categories = new ArrayList<>();
@@ -33,6 +34,8 @@ public class RevenueDTO {
         img = entity.getImg();
         description = entity.getDescription();
         preparetion = new PreparetionDTO(entity.getPreparation());
+        score = entity.getScore();
+        count = entity.getCount();
         ingredients = entity.getIngredients().stream().map(IngredientsDTO::new).collect(Collectors.toList());
         for (Category cat : entity.getCategories()){
             categories.add(new CategoryDTO(cat));

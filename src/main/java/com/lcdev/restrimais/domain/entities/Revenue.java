@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.*;
 
@@ -20,12 +21,14 @@ public class Revenue {
 
     private String title;
     private String img;
+    private Double score;
+    private Integer count;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
     @OneToMany(mappedBy = "revenue")
-    private List<Assessment> assessments = new ArrayList<>();
+    private Set<Assessment> assessments = new HashSet<>();
 
     @OneToOne
     @MapsId

@@ -30,8 +30,8 @@ public class Nutritionist extends User{
     @OneToMany(mappedBy = "nutritionist")
     private List<ProfessionalExperience> experiences = new ArrayList<>();
 
-    @OneToMany(mappedBy = "nutritionist")
-    private List<Assessment> assessments = new ArrayList<>();
+//    @OneToMany(mappedBy = "nutritionist")
+//    private Set<Assessment> assessments = new HashSet<>();
 
     @OneToMany(mappedBy = "nutritionist")
     private Set<Query> queries = new HashSet<>();

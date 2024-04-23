@@ -45,8 +45,8 @@ INSERT INTO tb_step (step, preparation_id) VALUES ('3 - Misture a alface, tomate
 INSERT INTO tb_step (step, preparation_id) VALUES ('1 - Pré-aqueça o forno a 180°C. Unte e enfarinhe uma forma de bolo', 2);
 INSERT INTO tb_step (step, preparation_id) VALUES ('2 - No liquidificador, bata as cenouras picadas, os ovos, o óleo e a essência de baunilha até obter uma mistura homogênea.', 2);
 
-INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Salada ', 'link da img','Desfrute de uma salada especial fresca e colorida, repleta de ingredientes da estação. Delicie-se com a combinação de vegetais crocantes, ervas aromáticas e um molho irresistível, criando uma explosão de sabores em cada garfada. Uma opção saudável e deliciosa para satisfazer o seu paladar.', 1);
-INSERT INTO tb_revenue (title, img, description, preparation_id) VALUES ('Bolo de cenoura sem gluten ', 'link da img','Desfrute desse bolo delicioso.', 2);
+INSERT INTO tb_revenue (score, count, title, img, description, preparation_id) VALUES (4.5, 2, 'Salada ', 'link da img','Desfrute de uma salada especial fresca e colorida, repleta de ingredientes da estação. Delicie-se com a combinação de vegetais crocantes, ervas aromáticas e um molho irresistível, criando uma explosão de sabores em cada garfada. Uma opção saudável e deliciosa para satisfazer o seu paladar.', 1);
+INSERT INTO tb_revenue (score, count, title, img, description, preparation_id) VALUES (0, 0, 'Bolo de cenoura sem gluten ', 'link da img','Desfrute desse bolo delicioso.', 2);
 
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 Alface fresca', 1);
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 Tomates maduros', 1);
@@ -57,8 +57,8 @@ INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('3 ovos', 2);
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 xícara de óleo vegetal', 2);
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 xícaras de açúcar', 2);
 
-INSERT INTO tb_assessment (score, comment, patient_id, nutritionist_id) VALUES (4.5, 'Muito bom profissional, atencionoso e educado!', 1, 1);
-INSERT INTO tb_assessment (score, comment, patient_id, revenue_id) VALUES (5.0, 'Receita maravilhosa', 1, 2);
+INSERT INTO tb_assessment(valor, patient_id, revenue_id, comment) VALUES (5.0, 1, 1, 'Boa receita.');
+INSERT INTO tb_assessment(valor, patient_id, revenue_id, comment) VALUES (4.0, 2, 1, 'Gostei muito.');
 
 INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (1, 1);
 INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (1, 2);

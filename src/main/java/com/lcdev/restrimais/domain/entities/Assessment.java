@@ -1,36 +1,32 @@
 package com.lcdev.restrimais.domain.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
-@Data
-@ToString
 @Entity
-@Table(name = "tb_assessment", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"patient_id", "nutritionist_id"}),
-        @UniqueConstraint(columnNames = {"patient_id", "revenue_id"}),
-        @UniqueConstraint(columnNames = {"nutritionist_id", "revenue_id"})
-})
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "tb_assessment")
 public class Assessment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private Double score;
-    private String comment;
+    @EmbeddedId
+    private AssessmentRevenuePK id;
 
     @ManyToOne
+    @MapsId("patient_id")
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @ManyToOne
-    @JoinColumn(name = "nutritionist_id")
-    private Nutritionist nutritionist;
-
-    @ManyToOne
+    @MapsId("revenue_id")
     @JoinColumn(name = "revenue_id")
     private Revenue revenue;
+
+    private Double valor;
+    private String comment;
+
 
 }
