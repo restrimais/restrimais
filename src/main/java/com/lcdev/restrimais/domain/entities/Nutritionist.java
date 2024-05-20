@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -33,6 +33,19 @@ public class Nutritionist extends User{
 //    @OneToMany(mappedBy = "nutritionist")
 //    private Set<Assessment> assessments = new HashSet<>();
 
-    @OneToMany(mappedBy = "nutritionist")
-    private Set<Query> queries = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "tb_nutritionist_role",
+            joinColumns = @JoinColumn(name = "nutritionist_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toSet());
+    }
+
 }
