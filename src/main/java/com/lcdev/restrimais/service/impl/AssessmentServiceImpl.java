@@ -17,6 +17,8 @@ import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AssessmentServiceImpl implements AssessmentService {
@@ -29,8 +31,11 @@ public class AssessmentServiceImpl implements AssessmentService {
     @Transactional
     public RevenueMinDTO saveAssementRevenue(AssessmentRevenueDTO dto) {
 
-        Patient patient = patientRepository.findByEmail(dto.getEmail());
-        if(patient == null) {
+        Optional<Patient> optionalPatient = patientRepository.findByEmail(dto.getEmail());
+        Patient patient;
+        if(optionalPatient.isPresent()) {
+            patient = optionalPatient.get();
+        } else {
             patient = new Patient();
             patient.setEmail(dto.getEmail());
             patient = patientRepository.saveAndFlush(patient);

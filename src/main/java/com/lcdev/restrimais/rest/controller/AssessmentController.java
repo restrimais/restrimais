@@ -4,6 +4,7 @@ import com.lcdev.restrimais.rest.dto.assessment.AssessmentRevenueDTO;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
 import com.lcdev.restrimais.service.AssessmentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ public class AssessmentController {
 
     private final AssessmentService assessmentService;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @PutMapping
     public RevenueMinDTO saveAssement(@RequestBody AssessmentRevenueDTO dto){
         RevenueMinDTO revenueDTO = assessmentService.saveAssementRevenue(dto);
