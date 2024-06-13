@@ -38,18 +38,22 @@ public class PatientServiceImpl implements PatientService {
 
     @Transactional
     public PatientAddressDTO save(PatientAddressDTO dto) {
-        Patient entity = patientMapper.mapPatientAdress(dto);
+        try {
+            Patient entity = patientMapper.mapPatientAdress(dto);
 
-        for (AddressDTO addressDTO : dto.getAddress()) {
-            entity.getAddresses().add(addressService.persistAddress(addressDTO, entity, null));
+            for (AddressDTO addressDTO : dto.getAddress()) {
+                entity.getAddresses().add(addressService.persistAddress(addressDTO, entity, null));
+            }
+
+            for (RestrictionMinDTO restrictionMinDTO: dto.getRestrictions()){
+                entity.getRestrictions().add(restrictionService.persistRestriction(restrictionMinDTO, entity));
+            }
+
+            entity = repository.save(entity);
+            return new PatientAddressDTO(entity);
+        } catch (DataIntegrityViolationException e){
+            throw new DatabaseException("Email já cadastrado: " + dto.getEmail());
         }
-
-        for (RestrictionMinDTO restrictionMinDTO: dto.getRestrictions()){
-            entity.getRestrictions().add(restrictionService.persistRestriction(restrictionMinDTO, entity));
-        }
-
-        entity = repository.save(entity);
-        return new PatientAddressDTO(entity);
     }
 
     @Override

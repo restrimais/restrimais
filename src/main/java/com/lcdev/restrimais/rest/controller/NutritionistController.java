@@ -2,8 +2,12 @@ package com.lcdev.restrimais.rest.controller;
 
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
+import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistMinDTO;
+import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
 import com.lcdev.restrimais.service.NutritionistService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +48,12 @@ public class NutritionistController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping
-    public List<NutritionistDTO> fidAll(){return service.findAll();}
+    public ResponseEntity<Page<NutritionistMinDTO>> fidAll(
+            @RequestParam(name = "name", defaultValue = "") String name, Pageable pageable
+    ){
+        Page<NutritionistMinDTO> dto = service.findAll(name, pageable);
+        return ResponseEntity.ok(dto);
+    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @DeleteMapping(value = "/{id}")
