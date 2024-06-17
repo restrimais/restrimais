@@ -13,7 +13,7 @@ INSERT INTO tb_restriction_category (restriction_id, category_id) VALUES (1, 1);
 INSERT INTO tb_restriction_category (restriction_id, category_id) VALUES (2, 3);
 INSERT INTO tb_restriction_category (restriction_id, category_id) VALUES (3, 1);
 
-INSERT INTO tb_nutritionist (name, email, birth_date, password, cpf, gender, profile_img, phone, crn, specialization, academic_degree, biography) VALUES ('Ana Luiza', 'ana@gmail.com', '2002-10-08', '$2a$10$6.KwfIfe695nY3eirYJLxui4FLZpXMzs66cfd7y9YB9XocWxPxa8q', '44455566609', 1, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg', '955557777', 'CRM/SP 123456', 'Nutricao Esportiva', 'Bacharelado em Nutricao', 'Nutricionista Esportiva dedicada a otimizar desempenho e saúde. Graduada em Nutrição pela [Nome da Universidade], com especialização em Nutrição Esportiva pela [Nome da Instituição]. Meu foco é fornecer orientação personalizada para ajudar meus clientes a alcançar seus objetivos. Apaixonada por promover educação em saúde, sou palestrante em eventos esportivos e escolas. Acredito que a nutrição e um estilo de vida ativo são a chave para o bem-estar.');
+INSERT INTO tb_nutritionist (name, email, birth_date, password, cpf, gender, profile_img, phone, crn, specialization, academic_degree, biography, score, count) VALUES ('Ana Luiza', 'ana@gmail.com', '2002-10-08', '$2a$10$6.KwfIfe695nY3eirYJLxui4FLZpXMzs66cfd7y9YB9XocWxPxa8q', '44455566609', 1, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg', '955557777', 'CRM/SP 123456', 'Nutricao Esportiva', 'Bacharelado em Nutricao', 'Nutricionista Esportiva dedicada a otimizar desempenho e saúde. Graduada em Nutrição pela [Nome da Universidade], com especialização em Nutrição Esportiva pela [Nome da Instituição]. Meu foco é fornecer orientação personalizada para ajudar meus clientes a alcançar seus objetivos. Apaixonada por promover educação em saúde, sou palestrante em eventos esportivos e escolas. Acredito que a nutrição e um estilo de vida ativo são a chave para o bem-estar.', 0, 0);
 
 INSERT INTO tb_role (authority) VALUES ('ROLE_CLIENT');
 INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN');
@@ -66,8 +66,8 @@ INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('3 ovos', 2);
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('1 xícara de óleo vegetal', 2);
 INSERT INTO tb_ingredients (igredient, revenue_id) VALUES ('2 xícaras de açúcar', 2);
 
-INSERT INTO tb_assessment(valor, patient_id, revenue_id, comment) VALUES (5.0, 1, 1, 'Boa receita.');
-INSERT INTO tb_assessment(valor, patient_id, revenue_id, comment) VALUES (4.0, 2, 1, 'Gostei muito.');
+INSERT INTO tb_assessment_revenue(valor, patient_id, revenue_id, comment) VALUES (5.0, 1, 1, 'Boa receita.');
+INSERT INTO tb_assessment_revenue(valor, patient_id, revenue_id, comment) VALUES (4.0, 2, 1, 'Gostei muito.');
 
 INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (1, 1);
 INSERT INTO tb_revenue_category (revenue_id, category_id) VALUES (1, 2);

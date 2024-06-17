@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_assessment")
-public class Assessment {
+@Table(name = "tb_assessment_nutritionist")
+public class AssessmentNutritionist {
 
     @EmbeddedId
-    private AssessmentRevenuePK id;
+    private AssessmentNutritionistPK id;
 
     @ManyToOne
     @MapsId("patient_id")
@@ -21,9 +21,9 @@ public class Assessment {
     private Patient patient;
 
     @ManyToOne
-    @MapsId("revenue_id")
-    @JoinColumn(name = "revenue_id")
-    private Revenue revenue;
+    @MapsId("nutritionist_id")
+    @JoinColumn(name = "nutritionist_id")
+    private Nutritionist nutritionist;
 
     private Double valor;
     private String comment;

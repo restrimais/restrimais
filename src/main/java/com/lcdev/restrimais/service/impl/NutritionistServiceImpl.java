@@ -5,6 +5,7 @@ import com.lcdev.restrimais.mapper.NutritionistMapper;
 import com.lcdev.restrimais.repository.NutritionistRepository;
 import com.lcdev.restrimais.rest.dto.address.AddressDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
+import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAssessmentDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistMinDTO;
 import com.lcdev.restrimais.service.AddressService;
@@ -60,10 +61,10 @@ public class NutritionistServiceImpl implements NutritionistService {
 
     @Override
     @Transactional(readOnly = true)
-    public NutritionistAddressDTO findById(Long id){
+    public NutritionistAssessmentDTO findById(Long id){
         Nutritionist entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado."));
-        return new NutritionistAddressDTO(entity);
+        return new NutritionistAssessmentDTO(entity);
     }
 
     @Override

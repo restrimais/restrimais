@@ -1,6 +1,7 @@
 package com.lcdev.restrimais.rest.controller;
 
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
+import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAssessmentDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistMinDTO;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
@@ -41,9 +42,9 @@ public class NutritionistController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @GetMapping("/{id}")
-    public ResponseEntity<NutritionistAddressDTO> findById(@PathVariable Long id){
-        NutritionistAddressDTO entity = service.findById(id);
-        return ResponseEntity.ok(entity);
+    public ResponseEntity<NutritionistAssessmentDTO> findById(@PathVariable Long id){
+        NutritionistAssessmentDTO dto = service.findById(id);
+        return ResponseEntity.ok(dto);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")

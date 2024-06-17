@@ -1,6 +1,7 @@
 package com.lcdev.restrimais.service;
 
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
+import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAssessmentDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
 import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistMinDTO;
 import org.springframework.data.domain.Page;
@@ -14,7 +15,7 @@ public interface NutritionistService {
 
     NutritionistDTO update(Long id, NutritionistDTO dto);
 
-    NutritionistAddressDTO findById(Long id);
+    NutritionistAssessmentDTO findById(Long id);
 
     Page<NutritionistMinDTO> findAll(String name, Pageable pageable);
 

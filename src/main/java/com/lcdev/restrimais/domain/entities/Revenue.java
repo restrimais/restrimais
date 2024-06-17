@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.*;
 
@@ -28,7 +27,7 @@ public class Revenue {
     private String description;
 
     @OneToMany(mappedBy = "revenue")
-    private Set<Assessment> assessments = new HashSet<>();
+    private Set<AssessmentRevenue> assessments = new HashSet<>();
 
     @OneToOne
     @MapsId

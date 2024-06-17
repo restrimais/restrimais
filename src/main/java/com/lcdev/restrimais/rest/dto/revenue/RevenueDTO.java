@@ -2,7 +2,7 @@ package com.lcdev.restrimais.rest.dto.revenue;
 
 import com.lcdev.restrimais.domain.entities.Category;
 import com.lcdev.restrimais.domain.entities.Revenue;
-import com.lcdev.restrimais.rest.dto.assessment.UserCommentsDTO;
+import com.lcdev.restrimais.rest.dto.assessment.RevenueUserCommentDTO;
 import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
 import com.lcdev.restrimais.rest.dto.ingredients.IngredientsDTO;
 import com.lcdev.restrimais.rest.dto.preparetion.PreparetionDTO;
@@ -28,7 +28,7 @@ public class RevenueDTO {
     private PreparetionDTO preparetion;
     private List<IngredientsDTO> ingredients = new ArrayList<>();
     private List<CategoryDTO> categories = new ArrayList<>();
-    private List<UserCommentsDTO> comments = new ArrayList<>();
+    private List<RevenueUserCommentDTO> comments = new ArrayList<>();
 
     public RevenueDTO(Revenue entity){
         id = entity.getId();
@@ -39,7 +39,7 @@ public class RevenueDTO {
         score = entity.getScore();
         count = entity.getCount();
         ingredients = entity.getIngredients().stream().map(IngredientsDTO::new).collect(Collectors.toList());
-        comments = entity.getAssessments().stream().map(UserCommentsDTO::new).collect(Collectors.toList());
+        comments = entity.getAssessments().stream().map(RevenueUserCommentDTO::new).collect(Collectors.toList());
         for (Category cat : entity.getCategories()){
             categories.add(new CategoryDTO(cat));
         }

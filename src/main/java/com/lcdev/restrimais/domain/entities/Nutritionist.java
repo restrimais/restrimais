@@ -1,9 +1,7 @@
 package com.lcdev.restrimais.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -12,14 +10,17 @@ import java.util.stream.Collectors;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_nutritionist")
 public class Nutritionist extends User{
 
     private String crn;
     private String specialization;
     private String academicDegree;
+    private Double score;
+    private Integer count;
 
     @Column(columnDefinition = "TEXT")
     private String biography;
@@ -30,8 +31,8 @@ public class Nutritionist extends User{
     @OneToMany(mappedBy = "nutritionist")
     private List<ProfessionalExperience> experiences = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "nutritionist")
-//    private Set<Assessment> assessments = new HashSet<>();
+    @OneToMany(mappedBy = "nutritionist")
+    private Set<AssessmentNutritionist> assessments = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "tb_nutritionist_role",
@@ -48,4 +49,17 @@ public class Nutritionist extends User{
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toSet());
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Nutritionist that = (Nutritionist) o;
+        return Objects.equals(crn, that.crn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), crn);
+    }
 }

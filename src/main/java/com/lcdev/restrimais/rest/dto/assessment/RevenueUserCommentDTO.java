@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.rest.dto.assessment;
 
-import com.lcdev.restrimais.domain.entities.Assessment;
+import com.lcdev.restrimais.domain.entities.AssessmentRevenue;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCommentsDTO {
+public class RevenueUserCommentDTO {
 
     private String name;
     private String img;
     private String comment;
 
-    public UserCommentsDTO(Assessment entity) {
+    public RevenueUserCommentDTO(AssessmentRevenue entity) {
         name = entity.getPatient().getName();
         img = entity.getPatient().getProfileImg();
         comment = entity.getComment();

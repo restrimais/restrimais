@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.rest.controller;
 
-import com.lcdev.restrimais.rest.dto.assessment.AssessmentRevenueDTO;
+import com.lcdev.restrimais.rest.dto.assessment.AssessmentDTO;
 import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
 import com.lcdev.restrimais.service.AssessmentService;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,8 @@ public class AssessmentController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @PutMapping
-    public RevenueMinDTO saveAssement(@RequestBody AssessmentRevenueDTO dto){
-        RevenueMinDTO revenueDTO = assessmentService.saveAssementRevenue(dto);
-        return revenueDTO;
+    public AssessmentDTO saveAssement(@RequestBody AssessmentDTO dto){
+        AssessmentDTO assessmentDTO = assessmentService.saveAssessment(dto);
+        return assessmentDTO;
     }
 }
