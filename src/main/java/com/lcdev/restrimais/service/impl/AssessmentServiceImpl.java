@@ -1,6 +1,7 @@
 package com.lcdev.restrimais.service.impl;
 
 import com.lcdev.restrimais.domain.entities.*;
+import com.lcdev.restrimais.mapper.AssessmentMapper;
 import com.lcdev.restrimais.repository.*;
 import com.lcdev.restrimais.rest.dto.assessment.AssessmentDTO;
 import com.lcdev.restrimais.service.AssessmentService;
@@ -15,10 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class AssessmentServiceImpl implements AssessmentService {
 
     private final PatientRepository patientRepository;
+
     private final RevenueRepository revenueRepository;
+
     private final NutritionistRepository nutritionistRepository;
+
     private final AssessmentRevenueRepository assessmentRevenueRepository;
+
     private final AssessmentNutritionistRepository assessmentNutritionistRepository;
+
+    private final AssessmentMapper assessmentMapper;
 
     @Override
     @Transactional
@@ -32,7 +39,7 @@ public class AssessmentServiceImpl implements AssessmentService {
                 Revenue revenue = revenueRepository.findById(dto.getId())
                         .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado!"));
 
-                AssessmentRevenue assessment = createAssessmentRevenue(dto, patient, revenue);
+                AssessmentRevenue assessment = assessmentMapper.mapAssesssmentRevenue(dto, patient, revenue);
                 assessmentRevenueRepository.saveAndFlush(assessment);
                 updateRevenueScore(revenue);
                 return new AssessmentDTO(assessment);
@@ -40,39 +47,13 @@ public class AssessmentServiceImpl implements AssessmentService {
                 Nutritionist nutritionist = nutritionistRepository.findById(dto.getId())
                         .orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado!"));
 
-                AssessmentNutritionist assessmentNutritionist = createAssessmentNutritionist(dto, patient, nutritionist);
+                AssessmentNutritionist assessmentNutritionist = assessmentMapper.mapAssessmentNutritionist(dto, patient, nutritionist);
                 assessmentNutritionistRepository.saveAndFlush(assessmentNutritionist);
                 updateNutritionistScore(nutritionist);
                 return new AssessmentDTO(assessmentNutritionist);
             default:
                 throw new InvalidAssessmentTypeException("Tipo de enum desconhecido.");
         }
-    }
-
-    private AssessmentRevenue createAssessmentRevenue(AssessmentDTO dto, Patient patient, Revenue revenue) {
-        AssessmentRevenue assessment = new AssessmentRevenue();
-        AssessmentRevenuePK assessmentPK = new AssessmentRevenuePK();
-        assessmentPK.setPatientId(patient.getId());
-        assessmentPK.setRevenueId(revenue.getId());
-        assessment.setId(assessmentPK);
-        assessment.setPatient(patient);
-        assessment.setRevenue(revenue);
-        assessment.setValor(dto.getScore());
-        assessment.setComment(dto.getComment());
-        return assessment;
-    }
-
-    private AssessmentNutritionist createAssessmentNutritionist(AssessmentDTO dto, Patient patient, Nutritionist nutritionist) {
-        AssessmentNutritionist assessment = new AssessmentNutritionist();
-        AssessmentNutritionistPK assessmentPK = new AssessmentNutritionistPK();
-        assessmentPK.setPatientId(patient.getId());
-        assessmentPK.setNutritionistId(nutritionist.getId());
-        assessment.setId(assessmentPK);
-        assessment.setPatient(patient);
-        assessment.setNutritionist(nutritionist);
-        assessment.setValor(dto.getScore());
-        assessment.setComment(dto.getComment());
-        return assessment;
     }
 
     private void updateRevenueScore(Revenue revenue) {
