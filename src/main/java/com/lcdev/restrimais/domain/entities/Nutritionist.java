@@ -1,7 +1,10 @@
 package com.lcdev.restrimais.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -33,6 +36,15 @@ public class Nutritionist extends User{
 
     @OneToMany(mappedBy = "nutritionist")
     private Set<AssessmentNutritionist> assessments = new HashSet<>();
+
+    @OneToMany(mappedBy = "nutritionist")
+    private List<WorkSchedule> availableHours = new ArrayList<>();
+
+    @OneToMany(mappedBy = "nutritionist")
+    private List<Query> queries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "nutritionist")
+    private List<BlockedSlot> blockedSlots = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "tb_nutritionist_role",

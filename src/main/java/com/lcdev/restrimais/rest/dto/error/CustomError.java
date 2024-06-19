@@ -1,4 +1,4 @@
-package com.lcdev.restrimais.rest.dto;
+package com.lcdev.restrimais.rest.dto.error;
 
 import lombok.Getter;
 

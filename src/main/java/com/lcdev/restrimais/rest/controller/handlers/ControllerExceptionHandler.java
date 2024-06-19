@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.rest.controller.handlers;
 
-import com.lcdev.restrimais.rest.dto.CustomError;
+import com.lcdev.restrimais.rest.dto.error.CustomError;
 import com.lcdev.restrimais.service.exceptions.CityAlreadyExistsException;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
