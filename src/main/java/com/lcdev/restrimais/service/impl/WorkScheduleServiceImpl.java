@@ -4,6 +4,7 @@ import com.lcdev.restrimais.domain.entities.BlockedSlot;
 import com.lcdev.restrimais.domain.entities.Nutritionist;
 import com.lcdev.restrimais.domain.entities.Query;
 import com.lcdev.restrimais.domain.entities.WorkSchedule;
+import com.lcdev.restrimais.mapper.WorkScheduleMapper;
 import com.lcdev.restrimais.repository.BlockedSlotRepository;
 import com.lcdev.restrimais.repository.NutritionistRepository;
 import com.lcdev.restrimais.repository.QueryRepository;
@@ -34,6 +35,8 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
 
     private final QueryRepository queryRepository;
 
+    private final WorkScheduleMapper workScheduleMapper;
+
 
     @Override
     @Transactional
@@ -47,15 +50,7 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
             throw new IllegalArgumentException("Horarios e dia já existente.");
         }
 
-        WorkSchedule entity = new WorkSchedule();
-
-        entity.setNutritionist(nutritionist);
-        entity.setDayOfWeek(dto.getDayOfWeek());
-        entity.setEndTime(dto.getEndTime());
-        entity.setStartTime(dto.getStartTime());
-
-        entity = repository.save(entity);
-
+        WorkSchedule entity = repository.save(workScheduleMapper.mapWorkSchedule(dto, nutritionist));
         return new WorkScheduleDTO(entity);
     }
 

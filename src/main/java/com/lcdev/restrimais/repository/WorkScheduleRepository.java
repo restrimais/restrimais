@@ -1,6 +1,7 @@
 package com.lcdev.restrimais.repository;
 
 import com.lcdev.restrimais.domain.entities.WorkSchedule;
+import jakarta.persistence.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,7 @@ import java.util.List;
 public interface WorkScheduleRepository extends JpaRepository<WorkSchedule, Long> {
     List<WorkSchedule> findByNutritionistId(Long nutritionistId);
 
+    @Query("SELECT w FROM WorkSchedule w WHERE w.nutritionist.id = :nutritionistId AND w.dayOfWeek = :dayOfWeek")
     List<WorkSchedule> findByNutritionistIdAndDayOfWeek(Long nutritionistId, DayOfWeek dayOfWeek);
 
     @Query("SELECT COUNT(ws) > 0 FROM WorkSchedule ws " +

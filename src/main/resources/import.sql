@@ -41,8 +41,8 @@ INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, p
 INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, patient_id, nutritionist_id) VALUES ('Avenida Joa Silva', '16', 'Apartamento', 'Monte Verde', '69906-470', 2, null, 1);
 INSERT INTO tb_adress (street, number, complement, neighborhood, cep, city_id, patient_id, nutritionist_id) VALUES ('Avenida Ferroviarios', '17', 'Casa', 'Jardim Barros', '49045-234', 3, 2, null);
 
-INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, patient_id) VALUES ('2023-08-10T14:30:00', 1, 'Consulta para avaliação', 179.90, 1, 2);
-INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, patient_id) VALUES ('2023-09-10T18:30:00', 1, 'Sem observação', 100.0, 1, 1);
+--INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, patient_id) VALUES ('2023-08-10T14:30:00', 1, 'Consulta para avaliação', 179.90, 1, 2);
+--INSERT INTO tb_query (query_date, status, observation, price, nutritionist_id, patient_id) VALUES ('2023-09-10T18:30:00', 1, 'Sem observação', 100.0, 1, 1);
 
 INSERT INTO tb_preparation (time, observation) VALUES ('5 minutos', 'Sal a gosto!');
 INSERT INTO tb_preparation (time, temperature, observation) VALUES ('20 minutos', '180º', 'Rende até 8 pessoas.');
