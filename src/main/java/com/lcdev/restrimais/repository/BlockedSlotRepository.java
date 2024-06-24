@@ -1,11 +1,9 @@
 package com.lcdev.restrimais.repository;
 
-import com.lcdev.restrimais.domain.entities.BlockedSlot;
-import com.lcdev.restrimais.domain.entities.Query;
+import com.lcdev.restrimais.lib.entities.BlockedSlot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository

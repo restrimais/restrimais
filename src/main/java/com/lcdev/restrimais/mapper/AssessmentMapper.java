@@ -1,7 +1,7 @@
 package com.lcdev.restrimais.mapper;
 
-import com.lcdev.restrimais.domain.entities.*;
-import com.lcdev.restrimais.rest.dto.assessment.AssessmentDTO;
+import com.lcdev.restrimais.lib.dto.assessment.AssessmentDTO;
+import com.lcdev.restrimais.lib.entities.*;
 
 public interface AssessmentMapper {
 

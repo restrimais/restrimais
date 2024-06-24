@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Patient;
+import com.lcdev.restrimais.lib.entities.Patient;
 import com.lcdev.restrimais.mapper.PatientMapper;
-import com.lcdev.restrimais.rest.dto.patient.PatientAddressDTO;
-import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
+import com.lcdev.restrimais.lib.dto.patient.PatientAddressDTO;
+import com.lcdev.restrimais.lib.dto.patient.PatientDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

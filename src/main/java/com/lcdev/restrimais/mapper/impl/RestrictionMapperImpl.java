@@ -1,10 +1,10 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Category;
-import com.lcdev.restrimais.domain.entities.Restriction;
+import com.lcdev.restrimais.lib.entities.Category;
+import com.lcdev.restrimais.lib.entities.Restriction;
 import com.lcdev.restrimais.mapper.RestrictionMapper;
-import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
-import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
+import com.lcdev.restrimais.lib.dto.category.CategoryDTO;
+import com.lcdev.restrimais.lib.dto.restriction.RestrictionMinDTO;
 import org.springframework.stereotype.Component;
 
 @Component

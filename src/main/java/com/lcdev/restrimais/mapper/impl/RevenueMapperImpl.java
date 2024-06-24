@@ -1,12 +1,11 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.*;
+import com.lcdev.restrimais.lib.entities.*;
 import com.lcdev.restrimais.mapper.RevenueMapper;
-import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
-import com.lcdev.restrimais.rest.dto.ingredients.IngredientsDTO;
-import com.lcdev.restrimais.rest.dto.preparetion.PreparetionDTO;
-import com.lcdev.restrimais.rest.dto.revenue.RevenueDTO;
-import com.lcdev.restrimais.rest.dto.steps.StepDTO;
+import com.lcdev.restrimais.lib.dto.category.CategoryDTO;
+import com.lcdev.restrimais.lib.dto.ingredients.IngredientsDTO;
+import com.lcdev.restrimais.lib.dto.revenue.RevenueDTO;
+import com.lcdev.restrimais.lib.dto.steps.StepDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
-import com.lcdev.restrimais.domain.entities.WorkSchedule;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.WorkSchedule;
 import com.lcdev.restrimais.mapper.WorkScheduleMapper;
-import com.lcdev.restrimais.rest.dto.consultation.WorkScheduleDTO;
+import com.lcdev.restrimais.lib.dto.consultation.WorkScheduleDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

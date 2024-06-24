@@ -1,8 +1,8 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.domain.entities.Patient;
-import com.lcdev.restrimais.domain.entities.Restriction;
-import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
+import com.lcdev.restrimais.lib.entities.Patient;
+import com.lcdev.restrimais.lib.entities.Restriction;
+import com.lcdev.restrimais.lib.dto.restriction.RestrictionMinDTO;
 
 import java.util.List;
 

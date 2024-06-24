@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.rest.dto.nutritionist.ProfessionalExperienceDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.ProfessionalExperienceDTO;
 
 import java.util.List;
 

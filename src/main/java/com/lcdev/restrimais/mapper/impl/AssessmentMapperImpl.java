@@ -1,8 +1,8 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.*;
+import com.lcdev.restrimais.lib.entities.*;
 import com.lcdev.restrimais.mapper.AssessmentMapper;
-import com.lcdev.restrimais.rest.dto.assessment.AssessmentDTO;
+import com.lcdev.restrimais.lib.dto.assessment.AssessmentDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

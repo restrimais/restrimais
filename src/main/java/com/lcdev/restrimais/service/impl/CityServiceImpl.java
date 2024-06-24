@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.City;
-import com.lcdev.restrimais.domain.entities.State;
+import com.lcdev.restrimais.lib.entities.City;
+import com.lcdev.restrimais.lib.entities.State;
 import com.lcdev.restrimais.repository.CityRepository;
-import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
+import com.lcdev.restrimais.lib.dto.city.CityStateDTO;
 import com.lcdev.restrimais.service.CityService;
 import com.lcdev.restrimais.service.StateService;
 import com.lcdev.restrimais.service.exceptions.CityAlreadyExistsException;

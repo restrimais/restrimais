@@ -1,8 +1,8 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Category;
+import com.lcdev.restrimais.lib.entities.Category;
 import com.lcdev.restrimais.mapper.CategoryMapper;
-import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
+import com.lcdev.restrimais.lib.dto.category.CategoryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

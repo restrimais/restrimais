@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.*;
+import com.lcdev.restrimais.lib.entities.*;
 import com.lcdev.restrimais.mapper.AssessmentMapper;
 import com.lcdev.restrimais.repository.*;
-import com.lcdev.restrimais.rest.dto.assessment.AssessmentDTO;
+import com.lcdev.restrimais.lib.dto.assessment.AssessmentDTO;
 import com.lcdev.restrimais.service.AssessmentService;
 import com.lcdev.restrimais.service.exceptions.InvalidAssessmentTypeException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;

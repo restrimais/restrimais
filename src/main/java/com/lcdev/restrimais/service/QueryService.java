@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.rest.dto.consultation.QueryDTO;
+import com.lcdev.restrimais.lib.dto.consultation.QueryDTO;
 
 public interface QueryService {
 

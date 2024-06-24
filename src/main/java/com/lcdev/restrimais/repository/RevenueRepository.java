@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.repository;
 
-import com.lcdev.restrimais.domain.entities.Revenue;
+import com.lcdev.restrimais.lib.entities.Revenue;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

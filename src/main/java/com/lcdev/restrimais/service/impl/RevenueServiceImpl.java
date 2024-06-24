@@ -1,10 +1,10 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.Revenue;
+import com.lcdev.restrimais.lib.entities.Revenue;
 import com.lcdev.restrimais.mapper.RevenueMapper;
 import com.lcdev.restrimais.repository.RevenueRepository;
-import com.lcdev.restrimais.rest.dto.revenue.RevenueDTO;
-import com.lcdev.restrimais.rest.dto.revenue.RevenueMinDTO;
+import com.lcdev.restrimais.lib.dto.revenue.RevenueDTO;
+import com.lcdev.restrimais.lib.dto.revenue.RevenueMinDTO;
 import com.lcdev.restrimais.service.RevenueService;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;

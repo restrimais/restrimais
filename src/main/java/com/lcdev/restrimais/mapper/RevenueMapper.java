@@ -1,7 +1,7 @@
 package com.lcdev.restrimais.mapper;
 
-import com.lcdev.restrimais.domain.entities.Revenue;
-import com.lcdev.restrimais.rest.dto.revenue.RevenueDTO;
+import com.lcdev.restrimais.lib.entities.Revenue;
+import com.lcdev.restrimais.lib.dto.revenue.RevenueDTO;
 
 public interface RevenueMapper {
 

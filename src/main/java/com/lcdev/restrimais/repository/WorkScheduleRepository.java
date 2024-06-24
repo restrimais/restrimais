@@ -1,7 +1,6 @@
 package com.lcdev.restrimais.repository;
 
-import com.lcdev.restrimais.domain.entities.WorkSchedule;
-import jakarta.persistence.Cacheable;
+import com.lcdev.restrimais.lib.entities.WorkSchedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

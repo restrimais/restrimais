@@ -1,14 +1,14 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
-import com.lcdev.restrimais.domain.entities.Patient;
-import com.lcdev.restrimais.domain.entities.Role;
-import com.lcdev.restrimais.domain.entities.User;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.Patient;
+import com.lcdev.restrimais.lib.entities.Role;
+import com.lcdev.restrimais.lib.entities.User;
 import com.lcdev.restrimais.projections.UserDetailsProjection;
 import com.lcdev.restrimais.repository.NutritionistRepository;
 import com.lcdev.restrimais.repository.PatientRepository;
 import com.lcdev.restrimais.repository.UserRepository;
-import com.lcdev.restrimais.rest.dto.user.UserLoggedDTO;
+import com.lcdev.restrimais.lib.dto.user.UserLoggedDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

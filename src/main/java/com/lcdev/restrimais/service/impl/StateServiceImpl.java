@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.State;
+import com.lcdev.restrimais.lib.entities.State;
 import com.lcdev.restrimais.repository.StateRepository;
-import com.lcdev.restrimais.rest.dto.state.StateCityDTO;
-import com.lcdev.restrimais.rest.dto.state.StateDTO;
+import com.lcdev.restrimais.lib.dto.state.StateCityDTO;
+import com.lcdev.restrimais.lib.dto.state.StateDTO;
 import com.lcdev.restrimais.service.StateService;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;

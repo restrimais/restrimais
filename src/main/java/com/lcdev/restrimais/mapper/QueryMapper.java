@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.mapper;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
-import com.lcdev.restrimais.domain.entities.Patient;
-import com.lcdev.restrimais.domain.entities.Query;
-import com.lcdev.restrimais.rest.dto.consultation.QueryDTO;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.Patient;
+import com.lcdev.restrimais.lib.entities.Query;
+import com.lcdev.restrimais.lib.dto.consultation.QueryDTO;
 
 public interface QueryMapper {
 

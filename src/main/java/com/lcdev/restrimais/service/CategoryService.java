@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.rest.dto.category.CategoryDTO;
+import com.lcdev.restrimais.lib.dto.category.CategoryDTO;
 
 import java.util.List;
 

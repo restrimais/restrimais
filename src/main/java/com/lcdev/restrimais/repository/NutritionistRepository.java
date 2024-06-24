@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.repository;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

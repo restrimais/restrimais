@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.repository;
 
-import com.lcdev.restrimais.domain.entities.User;
+import com.lcdev.restrimais.lib.entities.User;
 import com.lcdev.restrimais.projections.UserDetailsProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

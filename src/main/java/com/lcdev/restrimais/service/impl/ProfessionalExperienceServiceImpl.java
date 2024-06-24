@@ -1,8 +1,8 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.ProfessionalExperience;
+import com.lcdev.restrimais.lib.entities.ProfessionalExperience;
 import com.lcdev.restrimais.repository.ProfessionalExperienceRepository;
-import com.lcdev.restrimais.rest.dto.nutritionist.ProfessionalExperienceDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.ProfessionalExperienceDTO;
 import com.lcdev.restrimais.service.ProfessionalExperienceService;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;

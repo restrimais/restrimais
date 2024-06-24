@@ -1,6 +1,6 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.rest.dto.consultation.BlockedSlotDTO;
+import com.lcdev.restrimais.lib.dto.consultation.BlockedSlotDTO;
 
 import java.util.List;
 

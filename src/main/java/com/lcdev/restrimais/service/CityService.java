@@ -1,8 +1,8 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.domain.entities.City;
-import com.lcdev.restrimais.domain.entities.State;
-import com.lcdev.restrimais.rest.dto.city.CityStateDTO;
+import com.lcdev.restrimais.lib.entities.City;
+import com.lcdev.restrimais.lib.entities.State;
+import com.lcdev.restrimais.lib.dto.city.CityStateDTO;
 
 import java.util.List;
 

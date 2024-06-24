@@ -1,11 +1,11 @@
 package com.lcdev.restrimais.mapper.impl;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
-import com.lcdev.restrimais.domain.entities.Patient;
-import com.lcdev.restrimais.domain.entities.Query;
-import com.lcdev.restrimais.domain.enums.QueryStatus;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.Patient;
+import com.lcdev.restrimais.lib.entities.Query;
+import com.lcdev.restrimais.lib.enums.QueryStatus;
 import com.lcdev.restrimais.mapper.QueryMapper;
-import com.lcdev.restrimais.rest.dto.consultation.QueryDTO;
+import com.lcdev.restrimais.lib.dto.consultation.QueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

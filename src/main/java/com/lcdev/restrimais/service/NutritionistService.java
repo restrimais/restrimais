@@ -1,13 +1,11 @@
 package com.lcdev.restrimais.service;
 
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAssessmentDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistMinDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistAddressDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistAssessmentDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistMinDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 
 public interface NutritionistService {
 

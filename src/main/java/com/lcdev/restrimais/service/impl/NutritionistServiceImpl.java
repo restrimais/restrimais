@@ -1,13 +1,13 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
 import com.lcdev.restrimais.mapper.NutritionistMapper;
 import com.lcdev.restrimais.repository.NutritionistRepository;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAddressDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistAssessmentDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistDTO;
-import com.lcdev.restrimais.rest.dto.nutritionist.NutritionistMinDTO;
+import com.lcdev.restrimais.lib.dto.address.AddressDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistAddressDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistAssessmentDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistDTO;
+import com.lcdev.restrimais.lib.dto.nutritionist.NutritionistMinDTO;
 import com.lcdev.restrimais.service.AddressService;
 import com.lcdev.restrimais.service.NutritionistService;
 import com.lcdev.restrimais.service.exceptions.DatabaseException;
@@ -19,9 +19,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

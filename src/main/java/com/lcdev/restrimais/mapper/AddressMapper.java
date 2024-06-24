@@ -1,7 +1,7 @@
 package com.lcdev.restrimais.mapper;
 
-import com.lcdev.restrimais.domain.entities.Address;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
+import com.lcdev.restrimais.lib.entities.Address;
+import com.lcdev.restrimais.lib.dto.address.AddressDTO;
 
 public interface AddressMapper {
 

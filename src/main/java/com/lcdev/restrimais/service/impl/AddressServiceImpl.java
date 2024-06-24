@@ -1,9 +1,9 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.*;
+import com.lcdev.restrimais.lib.entities.*;
 import com.lcdev.restrimais.mapper.AddressMapper;
 import com.lcdev.restrimais.repository.AddressRepository;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
+import com.lcdev.restrimais.lib.dto.address.AddressDTO;
 import com.lcdev.restrimais.service.AddressService;
 import com.lcdev.restrimais.service.CityService;
 import com.lcdev.restrimais.service.StateService;

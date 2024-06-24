@@ -1,13 +1,13 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.Patient;
+import com.lcdev.restrimais.lib.entities.Patient;
 import com.lcdev.restrimais.mapper.PatientMapper;
 import com.lcdev.restrimais.mapper.RestrictionMapper;
 import com.lcdev.restrimais.repository.PatientRepository;
-import com.lcdev.restrimais.rest.dto.address.AddressDTO;
-import com.lcdev.restrimais.rest.dto.patient.PatientAddressDTO;
-import com.lcdev.restrimais.rest.dto.patient.PatientDTO;
-import com.lcdev.restrimais.rest.dto.restriction.RestrictionMinDTO;
+import com.lcdev.restrimais.lib.dto.address.AddressDTO;
+import com.lcdev.restrimais.lib.dto.patient.PatientAddressDTO;
+import com.lcdev.restrimais.lib.dto.patient.PatientDTO;
+import com.lcdev.restrimais.lib.dto.restriction.RestrictionMinDTO;
 import com.lcdev.restrimais.service.AddressService;
 import com.lcdev.restrimais.service.PatientService;
 import com.lcdev.restrimais.service.RestrictionService;

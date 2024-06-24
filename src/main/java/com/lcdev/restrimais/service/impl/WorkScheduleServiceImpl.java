@@ -1,15 +1,15 @@
 package com.lcdev.restrimais.service.impl;
 
-import com.lcdev.restrimais.domain.entities.BlockedSlot;
-import com.lcdev.restrimais.domain.entities.Nutritionist;
-import com.lcdev.restrimais.domain.entities.Query;
-import com.lcdev.restrimais.domain.entities.WorkSchedule;
+import com.lcdev.restrimais.lib.entities.BlockedSlot;
+import com.lcdev.restrimais.lib.entities.Nutritionist;
+import com.lcdev.restrimais.lib.entities.Query;
+import com.lcdev.restrimais.lib.entities.WorkSchedule;
 import com.lcdev.restrimais.mapper.WorkScheduleMapper;
 import com.lcdev.restrimais.repository.BlockedSlotRepository;
 import com.lcdev.restrimais.repository.NutritionistRepository;
 import com.lcdev.restrimais.repository.QueryRepository;
 import com.lcdev.restrimais.repository.WorkScheduleRepository;
-import com.lcdev.restrimais.rest.dto.consultation.WorkScheduleDTO;
+import com.lcdev.restrimais.lib.dto.consultation.WorkScheduleDTO;
 import com.lcdev.restrimais.service.WorkScheduleService;
 import com.lcdev.restrimais.service.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
